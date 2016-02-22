@@ -1,11 +1,10 @@
 %{?scl:%scl_package babel}
 %{!?scl:%global pkg_name %{name}}
 
-%global with_docs 0
 
 Name:           %{?scl_prefix}babel
 Version:        1.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools for internationalizing Python applications
 
 Group:          Development/Languages
@@ -21,13 +20,9 @@ BuildRequires:  %{?scl_prefix}python-setuptools
 BuildRequires:  pytz
 
 BuildRequires:  make
-%if 0%{?with_docs}
 BuildRequires:  %{?scl_prefix}python-sphinx
-%endif
 
-%if 0%{?with_docs}
 Requires:       %{?scl_prefix}python-babel
-%endif
 Requires:       %{?scl_prefix}python-setuptools
 
 %description
@@ -66,7 +61,6 @@ chmod a-x babel/messages/frontend.py
 %{__python} setup.py build
 %{?scl:"}
 
-%if 0%{?with_docs}
 cd docs
 %{?scl:scl enable %{scl} "}
 make html
@@ -75,7 +69,6 @@ mv _build/html .
 rm -rf _* api *.rst conf.py objects.inv Makefile make.bat
 mv html/* .
 rm -rf html
-%endif
 
 %install
 rm -rf %{buildroot}
@@ -93,14 +86,15 @@ rm -rf %{buildroot}
 
 %files -n %{?scl_prefix}python-babel
 %defattr(-,root,root,-)
-%if 0%{?with_docs}
 %doc docs/*
-%endif
 %{python_sitelib}/Babel-%{version}-py*.egg-info
 %{python_sitelib}/babel
 
 
 %changelog
+* Sat Feb 13 2016 Robert Kuska <rkuska@redhat.com> - 1.3-2
+- Remove with_docs
+
 * Thu Jan 22 2015 Matej Stuchlik <mstuchli@redhat.com> - 1.3-1
 - Update to 1.3
 
