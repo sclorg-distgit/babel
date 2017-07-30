@@ -1,11 +1,11 @@
 %{?scl:%scl_package babel}
 %{!?scl:%global pkg_name %{name}}
 
-%global with_docs 0
+%global with_docs 1
 
 Name:           %{?scl_prefix}babel
 Version:        2.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools for internationalizing Python applications
 
 Group:          Development/Languages
@@ -101,6 +101,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Jun 19 2017 Charalampos Stratakis <cstratak@redhat.com> - 2.4.0-2
+- Rebuild with docs
+
 * Fri Jun 16 2017 Charalampos Stratakis <cstratak@redhat.com> - 2.4.0-1
 - Update to 2.4.0 for rh-python36
 
