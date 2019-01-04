@@ -4,8 +4,8 @@
 %global with_docs 1
 
 Name:           %{?scl_prefix}babel
-Version:        2.4.0
-Release:        2%{?dist}
+Version:        2.5.1
+Release:        1.bs1%{?dist}
 Summary:        Tools for internationalizing Python applications
 
 Group:          Development/Languages
@@ -101,6 +101,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Sep 25 2017 Charalampos Stratakis <cstratak@redhat.com> - 2.5.1-1
+- Update to 2.5.1
+Resolves: rhbz#1494493
+
 * Mon Jun 19 2017 Charalampos Stratakis <cstratak@redhat.com> - 2.4.0-2
 - Rebuild with docs
 
